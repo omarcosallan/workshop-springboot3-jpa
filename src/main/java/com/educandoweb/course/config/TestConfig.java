@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.educandoweb.course.entities.User;
-import com.educandoweb.course.repository.UserRepository;
+import com.educandoweb.course.repositories.UserRepository;
 
 @Configuration
 @Profile("test")
