@@ -1,6 +1,7 @@
 package dev.marcos.course.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import dev.marcos.course.entity.enums.OrderStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -16,15 +17,19 @@ public class Order {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private LocalDateTime moment;
 
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
 
     public Order() {}
 
-    public Order(Long id, LocalDateTime moment, User client) {
+    public Order(Long id, LocalDateTime moment, OrderStatus orderStatus, User client) {
         this.id = id;
         this.moment = moment;
+        this.orderStatus = orderStatus;
         this.client = client;
     }
 
@@ -42,6 +47,14 @@ public class Order {
 
     public void setMoment(LocalDateTime moment) {
         this.moment = moment;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public User getClient() {
