@@ -1,5 +1,6 @@
 package dev.marcos.course.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -15,7 +16,8 @@ public class Category {
 
     private String name;
 
-    @Transient
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
     private final Set<Product> products = new HashSet<>();
 
     public Category() {}
