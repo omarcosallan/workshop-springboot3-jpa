@@ -1,5 +1,6 @@
 package dev.marcos.course.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ public class Payment {
 
     private LocalDateTime moment;
 
+    @JsonIgnore
     @OneToOne
     @MapsId
     private Order order;

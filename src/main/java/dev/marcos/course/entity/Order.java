@@ -84,4 +84,8 @@ public class Order {
     public Set<OrderItem> getItems() {
         return items;
     }
+
+    public Double getTotal() {
+        return items.stream().map(OrderItem::getSubTotal).reduce(0.0, Double::sum);
+    }
 }
